@@ -31,7 +31,7 @@ export default function MicrosoftSection({ isDark }: MicrosoftSectionProps) {
             <p className={`text-lg leading-relaxed mb-8 ${
               isDark ? 'text-microsoft-gray-300' : 'text-microsoft-gray-500'
             }`}>
-              Microsoft represents the intersection of innovation, inclusivity, and impact. With experience in AI, ML, and cloud technologies, I see Microsoft as the perfect environment to grow. I am inspired by Microsoft's AI (Copilot, Azure AI), cloud innovation, and sustainability. My goal is to align my journey with Microsoft's mission to empower every person and every organization on the planet to achieve more.
+              Microsoft represents the intersection of innovation, inclusivity, and impact. With experience in AI, ML, and cloud technologies, I see Microsoft as the perfect environment to grow. I am inspired by Microsoft&apos;s AI (Copilot, Azure AI), cloud innovation, and sustainability. My goal is to align my journey with Microsoft&apos;s mission to empower every person and every organization on the planet to achieve more.
             </p>
 
             <Button

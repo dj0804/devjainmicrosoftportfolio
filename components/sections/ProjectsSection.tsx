@@ -119,7 +119,7 @@ export default function ProjectsSection({ isDark }: ProjectsSectionProps) {
           <p className={`text-lg max-w-2xl mx-auto ${
             isDark ? 'text-microsoft-gray-300' : 'text-microsoft-gray-500'
           }`}>
-            Building innovative solutions that align with Microsoft's mission to empower productivity and innovation.
+            Building innovative solutions that align with Microsoft&apos;s mission to empower productivity and innovation.
           </p>
         </motion.div>
 

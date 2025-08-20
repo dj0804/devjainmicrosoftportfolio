@@ -50,7 +50,7 @@ export default function AboutSection({ isDark }: AboutSectionProps) {
             <p className={`text-lg leading-relaxed ${
               isDark ? 'text-microsoft-gray-300' : 'text-microsoft-gray-500'
             }`}>
-              I am a motivated and detail-oriented Computer Science student at VIT Vellore, with a strong foundation in software development, data analysis, and collaboration. My passion lies in applying AI, machine learning, and cloud technologies to create solutions that drive productivity and sustainability. Inspired by Microsoft's mission, I aim to empower people and organizations to achieve more.
+              I am a motivated and detail-oriented Computer Science student at VIT Vellore, with a strong foundation in software development, data analysis, and collaboration. My passion lies in applying AI, machine learning, and cloud technologies to create solutions that drive productivity and sustainability. Inspired by Microsoft&apos;s mission, I aim to empower people and organizations to achieve more.
             </p>
           </motion.div>
 

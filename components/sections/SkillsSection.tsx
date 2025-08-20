@@ -2,13 +2,15 @@
 
 import { motion, useInView } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
+import { useRef } from 'react'
 
 interface SkillsSectionProps {
   isDark: boolean
 }
 
 export default function SkillsSection({ isDark }: SkillsSectionProps) {
-  const skillsInView = useInView({ once: true, margin: "-100px" })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const SkillCategory = ({ 
     title, 
@@ -21,7 +23,7 @@ export default function SkillsSection({ isDark }: SkillsSectionProps) {
   }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={skillsInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className={`p-6 rounded-lg ${
         isDark ? 'bg-microsoft-gray-800' : 'bg-microsoft-gray-50'
@@ -51,13 +53,13 @@ export default function SkillsSection({ isDark }: SkillsSectionProps) {
   )
 
   return (
-    <section className={`py-20 lg:py-24 px-6 ${
+    <section ref={ref} className={`py-20 lg:py-24 px-6 ${
       isDark ? 'bg-microsoft-gray-800/30' : 'bg-microsoft-gray-50'
     }`}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={skillsInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >

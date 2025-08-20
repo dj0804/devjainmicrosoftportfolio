@@ -2,20 +2,22 @@
 
 import { motion, useInView } from 'framer-motion'
 import { Award } from 'lucide-react'
+import { useRef } from 'react'
 
 interface EducationSectionProps {
   isDark: boolean
 }
 
 export default function EducationSection({ isDark }: EducationSectionProps) {
-  const educationInView = useInView({ once: true, margin: "-100px" })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section className="py-20 lg:py-24 px-6">
+    <section ref={ref} className="py-20 lg:py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={educationInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -29,7 +31,7 @@ export default function EducationSection({ isDark }: EducationSectionProps) {
         <div className="max-w-3xl mx-auto space-y-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={educationInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0 }}
             className={`p-8 rounded-lg ${
               isDark ? 'bg-microsoft-gray-800' : 'bg-white'
@@ -57,7 +59,7 @@ export default function EducationSection({ isDark }: EducationSectionProps) {
 
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={educationInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             className={`p-6 rounded-lg ${
               isDark ? 'bg-microsoft-gray-800' : 'bg-white'
@@ -82,7 +84,7 @@ export default function EducationSection({ isDark }: EducationSectionProps) {
 
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={educationInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className={`p-6 rounded-lg ${
               isDark ? 'bg-microsoft-gray-800' : 'bg-white'

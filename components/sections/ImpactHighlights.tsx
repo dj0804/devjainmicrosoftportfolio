@@ -2,13 +2,15 @@
 
 import { motion, useInView } from 'framer-motion'
 import { Cpu, Award, Briefcase } from 'lucide-react'
+import { useRef } from 'react'
 
 interface ImpactHighlightsProps {
   isDark: boolean
 }
 
 export default function ImpactHighlights({ isDark }: ImpactHighlightsProps) {
-  const impactInView = useInView({ once: true, margin: "-100px" })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const ImpactHighlight = ({ 
     icon: Icon, 
@@ -23,7 +25,7 @@ export default function ImpactHighlights({ isDark }: ImpactHighlightsProps) {
   }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={impactInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className={`flex items-center gap-4 p-4 rounded-lg ${isDark ? 'bg-microsoft-gray-800' : 'bg-white'} border ${isDark ? 'border-microsoft-gray-700' : 'border-transparent'} microsoft-shadow`}
     >
@@ -35,7 +37,7 @@ export default function ImpactHighlights({ isDark }: ImpactHighlightsProps) {
   )
 
   return (
-    <section className="py-12 px-6">
+    <section ref={ref} className="py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
           <ImpactHighlight 

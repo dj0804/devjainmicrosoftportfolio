@@ -4,13 +4,15 @@ import { motion, useInView } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Brain, Truck, Recycle, Lightbulb, TrendingUp, ChevronRight } from 'lucide-react'
+import { useRef } from 'react'
 
 interface ProjectsSectionProps {
   isDark: boolean
 }
 
 export default function ProjectsSection({ isDark }: ProjectsSectionProps) {
-  const projectsInView = useInView({ once: true, margin: "-100px" })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const ProjectCard = ({ 
     title, 
@@ -31,7 +33,7 @@ export default function ProjectsSection({ isDark }: ProjectsSectionProps) {
   }) => (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
       <Card className={`h-full transition-all duration-300 hover:translate-y-[-4px] hover:shadow-2xl group cursor-pointer ${
@@ -101,13 +103,13 @@ export default function ProjectsSection({ isDark }: ProjectsSectionProps) {
   )
 
   return (
-    <section className={`py-20 lg:py-24 px-6 ${
+    <section ref={ref} className={`py-20 lg:py-24 px-6 ${
       isDark ? 'bg-microsoft-gray-800/30' : 'bg-microsoft-gray-50'
     }`}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >

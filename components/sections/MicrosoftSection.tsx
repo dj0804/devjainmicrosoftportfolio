@@ -3,23 +3,25 @@
 import { motion, useInView } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Brain, Users, TrendingUp, ChevronRight } from 'lucide-react'
+import { useRef } from 'react'
 
 interface MicrosoftSectionProps {
   isDark: boolean
 }
 
 export default function MicrosoftSection({ isDark }: MicrosoftSectionProps) {
-  const microsoftInView = useInView({ once: true, margin: "-100px" })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section className={`py-20 lg:py-24 px-6 ${
+    <section ref={ref} className={`py-20 lg:py-24 px-6 ${
       isDark ? 'bg-microsoft-gray-800/30' : 'bg-microsoft-gray-50'
     }`}>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            animate={microsoftInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className={`text-4xl lg:text-5xl font-light mb-8 ${
@@ -48,7 +50,7 @@ export default function MicrosoftSection({ isDark }: MicrosoftSectionProps) {
 
           <motion.div
             initial={{ opacity: 0, x: 40 }}
-            animate={microsoftInView ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="grid grid-cols-1 gap-6"
           >

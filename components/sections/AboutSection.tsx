@@ -2,13 +2,15 @@
 
 import { motion, useInView } from 'framer-motion'
 import { Cloud, Brain, BarChart3, Users, Lightbulb, Code } from 'lucide-react'
+import { useRef } from 'react'
 
 interface AboutSectionProps {
   isDark: boolean
 }
 
 export default function AboutSection({ isDark }: AboutSectionProps) {
-  const aboutRef = useInView({ once: true, margin: "-100px" })
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const SkillPillar = ({ icon: Icon, title, description, delay }: { 
     icon: any; 
@@ -18,7 +20,7 @@ export default function AboutSection({ isDark }: AboutSectionProps) {
   }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={aboutRef ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className={`text-center p-4 cursor-pointer group ${isDark ? 'hover:bg-microsoft-gray-800' : 'hover:bg-microsoft-gray-100'} rounded-lg transition-colors`}
     >
@@ -33,12 +35,12 @@ export default function AboutSection({ isDark }: AboutSectionProps) {
   )
 
   return (
-    <section className="py-20 lg:py-24 px-6">
+    <section ref={ref} className="py-20 lg:py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            animate={aboutRef ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className={`text-4xl lg:text-5xl font-light mb-8 ${
@@ -56,7 +58,7 @@ export default function AboutSection({ isDark }: AboutSectionProps) {
 
           <motion.div
             initial={{ opacity: 0, x: 40 }}
-            animate={aboutRef ? { opacity: 1, x: 0 } : {}}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative"
           >

@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Segoe UI', 'Segoe UI Variable', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dark {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .hero-bg {
+    background: linear-gradient(135deg, #0078D4 0%, #005A9E 100%);
+  }
+
+  .hero-bg-dark {
+    background: linear-gradient(135deg, #0078D4 0%, #004578 100%);
+  }
+
+  .microsoft-shadow {
+    box-shadow: 0 0.6px 1.8px rgba(0,0,0,0.1), 0 3.2px 7.2px rgba(0,0,0,0.13);
+  }
+} 

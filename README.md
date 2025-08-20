@@ -140,4 +140,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Microsoft Design System for inspiration
 - Next.js team for the amazing framework
 - Tailwind CSS for the utility-first CSS framework
-- Framer Motion for smooth animations 
+- Framer Motion for smooth animations

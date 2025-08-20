@@ -9,20 +9,25 @@ interface NavigationProps {
   setIsDark: (isDark: boolean) => void
 }
 
+interface Section {
+  id: string
+  ref: React.RefObject<HTMLElement>
+}
+
 export default function Navigation({ isDark, setIsDark }: NavigationProps) {
   const [activeSection, setActiveSection] = useState('hero')
-  const heroRef = useRef(null)
-  const aboutRef = useRef(null)
-  const projectsRef = useRef(null)
-  const skillsRef = useRef(null)
-  const educationRef = useRef(null)
-  const microsoftRef = useRef(null)
-  const contactRef = useRef(null)
+  const heroRef = useRef<HTMLElement>(null)
+  const aboutRef = useRef<HTMLElement>(null)
+  const projectsRef = useRef<HTMLElement>(null)
+  const skillsRef = useRef<HTMLElement>(null)
+  const educationRef = useRef<HTMLElement>(null)
+  const microsoftRef = useRef<HTMLElement>(null)
+  const contactRef = useRef<HTMLElement>(null)
 
   // Scroll spy
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
+      const sections: Section[] = [
         { id: 'hero', ref: heroRef },
         { id: 'about', ref: aboutRef },
         { id: 'projects', ref: projectsRef },
@@ -36,7 +41,8 @@ export default function Navigation({ isDark, setIsDark }: NavigationProps) {
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
-        if (section.ref.current && section.ref.current.offsetTop <= scrollPosition) {
+        const element = section.ref.current as HTMLElement
+        if (element && element.offsetTop <= scrollPosition) {
           setActiveSection(section.id)
           break
         }
